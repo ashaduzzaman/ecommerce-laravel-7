@@ -85,8 +85,8 @@ class OrderController extends Controller
         }
 
         //payment method
-            if($request('payment_method') == 'paypal'){
-
+            if(request('payment_method') == 'paypal'){
+                return redirect()->route('paypal.checkout');
             }
 
         //empty cart

@@ -24,6 +24,6 @@ Route::get('/cart/checkout', 'CartController@checkout')->name('cart.checkout')->
 
 Route::resource('orders', 'OrderController')->middleware('auth');
 
-Route::get('paypal/checkout', 'PaypalController@getExpressCheckout');
+Route::get('paypal/checkout', 'PaypalController@getExpressCheckout')->name('paypal.checkout');
 Route::get('paypal/checkout-success', 'PaypalController@getExpressCheckoutSuccess')->name('paypal.success');
 Route::get('paypal/checkout-cancel', 'PaypalController@cancelPage')->name('paypal.cancel');
