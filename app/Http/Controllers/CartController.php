@@ -37,15 +37,17 @@ class CartController extends Controller
         return back();
     }
 
-    public function update($itemId)
+    public function update(Request $request)
     {
         $userID = auth()->id();
-        \Cart::session($userID)->update($itemId,[
-            'quantity' => array(
-                'relative' => false,
-                'value' => request('quantity')
-            )
-        ]);
+        foreach($request->quant as $key => $value){
+            \Cart::session($userID)->update($key,[
+                'quantity' => array(
+                    'relative' => false,
+                    'value' => $value
+                )
+            ]);
+        }
 
         return back();
     }

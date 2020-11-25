@@ -23,7 +23,13 @@ Route::get('/cart/update/{itemId}', 'CartController@update')->name('cart.update'
 Route::get('/cart/checkout', 'CartController@checkout')->name('cart.checkout')->middleware('auth');
 
 Route::resource('orders', 'OrderController')->middleware('auth');
+Route::resource('shops', 'ShopController')->middleware('auth');
 
-Route::get('paypal/checkout', 'PaypalController@getExpressCheckout')->name('paypal.checkout');
-Route::get('paypal/checkout-success', 'PaypalController@getExpressCheckoutSuccess')->name('paypal.success');
+Route::get('paypal/checkout/{order}', 'PaypalController@getExpressCheckout')->name('paypal.checkout');
+Route::get('paypal/checkout-success/{order}', 'PaypalController@getExpressCheckoutSuccess')->name('paypal.success');
 Route::get('paypal/checkout-cancel', 'PaypalController@cancelPage')->name('paypal.cancel');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

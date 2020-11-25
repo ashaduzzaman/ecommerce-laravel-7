@@ -16,10 +16,13 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->unsignedBigInteger('shop_id')->nullable();
             $table->string('description');
             $table->float('price');
             $table->string('cover_img')->nullable();
             $table->timestamps();
+
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
         });
     }
 

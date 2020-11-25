@@ -25,6 +25,9 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::take(20)->get();
+        $cartItems = \Cart::session(auth()->id())->getContent();
+        // logger($products);
+        logger($cartItems);
         return view('home', get_defined_vars());
     }
 }

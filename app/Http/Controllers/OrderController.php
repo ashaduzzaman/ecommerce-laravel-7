@@ -74,6 +74,10 @@ class OrderController extends Controller
             $order->billing_zipcode = $request->input('billing_zipcode');
         }
 
+        if(request('payment_method') == 'paypal'){
+            $order->payment_method = 'paypal';
+        }
+
         $order->save();
 
         //save order items
@@ -86,7 +90,8 @@ class OrderController extends Controller
 
         //payment method
             if(request('payment_method') == 'paypal'){
-                return redirect()->route('paypal.checkout');
+                //redirect to paypal
+                return redirect()->route('paypal.checkout', $order->id);
             }
 
         //empty cart
@@ -97,7 +102,7 @@ class OrderController extends Controller
 
         //take user to thank you page
 
-        return "order completed, thank you for order";
+        return redirect()->route('home')->withMessage('Order has been placed');
     }
 
     /**
