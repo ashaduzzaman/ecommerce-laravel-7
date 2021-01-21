@@ -2198,11 +2198,26 @@ Version:1.0
 .shop-sidebar .single-post .reviews li.yellow i{
 	color:#F7941D;
 }
+/* No Product found*/
+
+.no-product{
+    margin-top: 20px;
+}
+
 /* Shop Topbar */
 .shop .shop-top {
 	clear: both;
 	background: #f6f7fb;
 	padding: 18px 20px 50px 20px;
+}
+.shop .shop-found{
+    clear: both;
+    background: #f6f7fb;
+    padding: 10px 0px 10px 10px;
+}
+.shop .shop-found span{
+    color: #333333;
+    font-size: 18px;
 }
 .shop .shop-shorter {
 	float: left;
