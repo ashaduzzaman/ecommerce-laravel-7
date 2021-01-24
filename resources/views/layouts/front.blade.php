@@ -42,7 +42,7 @@
 	<link rel="stylesheet" href="/asset/style.css">
 	<link rel="stylesheet" href="/asset/bundle.css">
     <link rel="stylesheet" href="/asset/css/responsive.css">
-
+    @livewireStyles
 
 
 </head>
@@ -400,5 +400,6 @@
 	<!-- Active JS -->
     <script src="/asset/js/active.js"></script>
     @yield('scripts')
+    @livewireScripts
 </body>
 </html>
