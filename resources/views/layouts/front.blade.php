@@ -40,6 +40,7 @@
 	<!-- Eshop StyleSheet -->
 	<link rel="stylesheet" href="/asset/css/reset.css">
 	<link rel="stylesheet" href="/asset/style.css">
+	<link rel="stylesheet" href="/asset/bundle.css">
     <link rel="stylesheet" href="/asset/css/responsive.css">
 
 
@@ -201,7 +202,7 @@
 										<div class="nav-inner">
 											<ul class="nav main-menu menu navbar-nav">
                                                 <li class="active"><a href="{{ route('home') }}">Home</a></li>
-													<li><a href="#">Product</a></li>
+													<li><a href="{{ route('products.index') }}">Product</a></li>
 													<li><a href="#">Service</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">

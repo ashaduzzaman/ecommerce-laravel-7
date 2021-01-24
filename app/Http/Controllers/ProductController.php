@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Product;
 use App\Category;
 use Illuminate\Http\Request;
@@ -15,7 +16,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $cartItems = \Cart::session(auth()->id())->getContent();
+        if(!Auth::user()){
+            $cartItems = \Cart::session('_token')->getContent();
+        }else{
+            $cartItems = \Cart::session(auth()->id())->getContent();
+        }
 
         $category_id = request('category_id');
 
@@ -40,5 +45,22 @@ class ProductController extends Controller
        $cartItems = \Cart::session(auth()->id())->getContent();
 
        return view('product.catalog', compact('products','cartItems'));
+   }
+
+   public function show($id)
+   {
+        if(!Auth::user()){
+            $cartItems = \Cart::session('_token')->getContent();
+        }else{
+            $cartItems = \Cart::session(auth()->id())->getContent();
+        }
+
+        $product = Product::findOrFail($id);
+
+
+
+        dd($product);
+
+       return view('product.product_details', get_defined_vars());
    }
 }

@@ -103,9 +103,9 @@
 							<div class="col-lg-8 col-md-5 col-12">
 								<div class="left">
 									<div class="coupon">
-										<form action="#" target="_blank">
-											<input name="Coupon" placeholder="Enter Your Coupon">
-											<button class="btn">Apply</button>
+										<form action="{{ route('cart.coupon') }}" method="GET">
+											<input name="coupon_code" placeholder="Enter Your Coupon">
+											<button class="btn" type="submit" name="submit">Apply</button>
 										</form>
 									</div>
 									<div class="checkbox">

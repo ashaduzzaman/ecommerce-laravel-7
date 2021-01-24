@@ -18,6 +18,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('products', 'ProductController@index')->name('products.index');
+Route::get('products/{id}', 'ProductController@show')->name('products.show');
 Route::get('/products/search','ProductController@search')->name('product.search');
 
 Route::get('/add-to-cart/{product}', 'CartController@add')->name('cart.add')->middleware('auth');
@@ -25,6 +26,7 @@ Route::get('/cart', 'CartController@index')->name('cart.index')->middleware('aut
 Route::get('/cart/destroy/{itemId}', 'CartController@destroy')->name('cart.destroy')->middleware('auth');
 Route::get('/cart/update/{itemId}', 'CartController@update')->name('cart.update')->middleware('auth');
 Route::get('/cart/checkout', 'CartController@checkout')->name('cart.checkout')->middleware('auth');
+Route::get('/cart/apply-coupon', 'CartController@applyCoupon')->name('cart.coupon')->middleware('auth');
 
 Route::resource('orders', 'OrderController')->middleware('auth');
 Route::resource('shops', 'ShopController')->middleware('auth');
