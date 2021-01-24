@@ -83,7 +83,22 @@
 								<li><i class="ti-location-pin"></i> Store location</li>
 								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
 								<li><i class="ti-user"></i> <a href="#">My account</a></li>
-								<li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
+								@auth
+									<li>
+										<i class="ti-power-off"></i>
+											<a href="{{ route('logout') }}"
+												onclick="event.preventDefault();
+																document.getElementById('logout-form').submit();">
+													{{ __('Logout') }}
+											</a>
+
+											<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+												@csrf
+											</form>
+									</li>
+								@else
+									<li><i class="ti-power-off"></i><a href="{{ route('login') }}">Login</a></li>
+								@endauth
 							</ul>
 						</div>
 						<!-- End Top Right -->
@@ -162,19 +177,33 @@
 										<a href="{{ route('cart.index') }}">View Cart</a>
 									</div>
 									<ul class="shopping-list">
-                                        @foreach ($cartItems as $cartItem)
-                                            <li>
-                                                <a href="{{ route('cart.destroy', $cartItem->id) }}" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                                <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-                                            <h4><a href="{{ $cartItem->id }}">{{ $cartItem->name }}</a></h4>
-                                                <p class="quantity">{{ $cartItem->quantity }}x - <span class="amount">${{ Cart::session(auth()->id())->get($cartItem->id)->getPriceSum() }}</span></p>
-                                            </li>
-                                        @endforeach
+										@if(isset($cartItems))
+											@foreach ($cartItems as $cartItem)
+												<li>
+													<a href="{{ route('cart.destroy', $cartItem->id) }}" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
+													<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
+												<h4><a href="{{ $cartItem->id }}">{{ $cartItem->name }}</a></h4>
+													<p class="quantity">{{ $cartItem->quantity }}x - <span class="amount">
+													@auth
+														${{ Cart::session(auth()->id())->get($cartItem->id)->getPriceSum() }}
+													@else
+														${{ Cart::session('_token')->get($cartItem->id)->getPriceSum() }}
+													@endauth
+													</span></p>
+												</li>
+											@endforeach
+										@endif
 									</ul>
 									<div class="bottom">
 										<div class="total">
 											<span>Total</span>
-											<span class="total-amount">${{ \Cart::session(auth()->id())->getTotal() }}</span>
+											<span class="total-amount">$
+												@auth
+													{{ \Cart::session(auth()->id())->getTotal() }}
+												@else
+													{{ \Cart::session('_token')->getTotal() }}
+												@endauth
+											</span>
 										</div>
 										<a href="checkout.html" class="btn animate">Checkout</a>
 									</div>

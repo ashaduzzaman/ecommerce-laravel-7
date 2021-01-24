@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Product;
 use Illuminate\Http\Request;
 use TCG\Voyager\Models\Category;
@@ -26,7 +27,11 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::take(20)->get();
-        $cartItems = \Cart::session(auth()->id())->getContent();
+        if(Auth::guest()){
+            $cartItems = \Cart::session('_token')->getContent();
+        }else{
+            $cartItems = \Cart::session(auth()->id())->getContent();
+        }
         $categories = Category::whereNull('parent_id')->get();
         // dd($categories);
         return view('home', get_defined_vars());
