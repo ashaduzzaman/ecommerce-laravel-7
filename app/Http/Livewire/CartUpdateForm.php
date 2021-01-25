@@ -17,9 +17,41 @@ class CartUpdateForm extends Component
         $this->quantity = $cartItem['quantity'];
     }
 
+    public function minusItem()
+    {
+        // dd('test');
+        $this->quantity = $this->quantity - 1;
+        \Cart::session(auth()->id())->update($this->cartItem['id'],[
+            'quantity' => array(
+                'relative' => false,
+                'value' => $this->quantity
+            )
+        ]);
+
+        $this->emit('cartUpdated');
+    }
+
+    public function plusItem()
+    {
+        $this->quantity = $this->quantity + 1;
+        \Cart::session(auth()->id())->update($this->cartItem['id'],[
+            'quantity' => array(
+                'relative' => false,
+                'value' => $this->quantity
+            )
+        ]);
+        $this->emit('cartUpdated');
+    }
+
     public function updateCart()
     {
-        dd('updating cart');
+        \Cart::session(auth()->id())->update($this->cartItem['id'],[
+            'quantity' => array(
+                'relative' => false,
+                'value' => $this->quantity
+            )
+        ]);
+        $this->emit('cartUpdated');
     }
     public function render()
     {

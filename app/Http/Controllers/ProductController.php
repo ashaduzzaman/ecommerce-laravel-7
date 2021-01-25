@@ -59,7 +59,7 @@ class ProductController extends Controller
 
 
 
-        dd($product);
+        // dd($product);
 
        return view('product.product_details', get_defined_vars());
    }

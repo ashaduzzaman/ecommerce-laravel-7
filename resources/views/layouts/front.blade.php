@@ -70,8 +70,7 @@
 						<!-- Top Left -->
 						<div class="top-left">
 							<ul class="list-main">
-								<li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
-								<li><i class="ti-email"></i> support@shophub.com</li>
+								<li><i class="ti-headphone-alt"></i><span class="ti-headphone-text"> (+880) 9610-223344</span></li>
 							</ul>
 						</div>
 						<!--/ End Top Left -->
@@ -80,9 +79,9 @@
 						<!-- Top Right -->
 						<div class="right-content">
 							<ul class="list-main">
-								<li><i class="ti-location-pin"></i> Store location</li>
+								{{-- <li><i class="ti-location-pin"></i> Store location</li>
 								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
-								<li><i class="ti-user"></i> <a href="#">My account</a></li>
+								<li><i class="ti-user"></i> <a href="#">My account</a></li> --}}
 								@auth
 									<li>
 										<i class="ti-power-off"></i>
@@ -205,7 +204,7 @@
 												@endauth
 											</span>
 										</div>
-										<a href="checkout.html" class="btn animate">Checkout</a>
+										<a href="{{ route('cart.checkout') }}" class="btn animate">Checkout</a>
 									</div>
 								</div>
 								<!--/ End Shopping Item -->
@@ -233,7 +232,7 @@
                                                 <li class="active"><a href="{{ route('home') }}">Home</a></li>
 													<li><a href="{{ route('products.index') }}">Product</a></li>
 													<li><a href="#">Service</a></li>
-													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
+													{{-- <li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
 															<li><a href="shop-grid.html">Shop Grid</a></li>
 															<li><a href="cart.html">Cart</a></li>
@@ -245,8 +244,8 @@
 														<ul class="dropdown">
 															<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
 														</ul>
-													</li>
-													<li><a href="contact.html">Contact Us</a></li>
+													</li> --}}
+													<li><a href="{{ route('contact.index') }}">Contact Us</a></li>
 												</ul>
 										</div>
 									</div>
@@ -355,10 +354,10 @@
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
-									<li>NO. 342 - London Oxford Street.</li>
-									<li>012 United Kingdom.</li>
-									<li>info@eshop.com</li>
-									<li>+032 3456 7890</li>
+									<li>House 37, Road 27, Block A,</li>
+									<li>Banani,  Dhaka-1213</li>
+									<li>info@motorsheba.com</li>
+									<li>(+880) 9610-223344</li>
 								</ul>
 							</div>
 							<!-- End Single Widget -->

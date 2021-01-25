@@ -26,9 +26,9 @@
                         </div>
                     </div>
                     <div class="details-price">
-                        <span>${{ product->price }}</span>
+                        <span>${{ $product->price }}</span>
                     </div>
-                    <p>{{ product->description }}</p>
+                    <p>{{ $product->description }}</p>
                     {{-- <div class="product-color-2">
                         <h4 class="details-title">Color*</h4>
                         <div class="product-color-style2">
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         <div class="quickview-btn-cart">
-                            <a class="btn-hover-black" href="#">add to cart</a>
+                            <a class="btn-hover-black" href="{{route('cart.add', $product->id)}}">add to cart</a>
                         </div>
                         {{-- <div class="quickview-btn-wishlist">
                             <a class="btn-hover" href="#"><i class="pe-7s-like"></i></a>

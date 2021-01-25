@@ -1,7 +1,7 @@
 <div class="col-xl-3 col-lg-4 col-md-4 col-12">
     <div class="single-product">
         <div class="product-img">
-            <a href="product-details.html">
+            <a href="{{route('products.show', $product->id)}}">
                 <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
                 <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
             </a>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="product-content">
-            <h3><a href="product-details.html">{{ $product->name }}</a></h3>
+            <h3><a href="{{route('products.show', $product->id)}}">{{ $product->name }}</a></h3>
             <div class="product-price">
                 <span>${{ $product->price }}</span>
             </div>

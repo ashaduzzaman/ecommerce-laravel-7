@@ -8,9 +8,16 @@ class MallCart extends Component
 {
     public $cartItems = [];
 
+    protected $listeners = ['cartUpdated' => 'onCartUpdated'];
+
     public function mount()
     {
         $this->cartItems = \Cart::session(auth()->id())->getContent()->toArray();
+    }
+
+    public function onCartUpdated()
+    {
+        $this->mount();
     }
     public function render()
     {

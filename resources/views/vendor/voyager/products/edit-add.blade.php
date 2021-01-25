@@ -94,6 +94,24 @@
                                 </div>
                             @endforeach
 
+                            @php
+                                $attributeOptions = \App\Attribute::with('values')->get();
+                            @endphp
+
+                            @foreach ($attributeOptions as $attr)
+                                <p>
+                                    <div class="form-group">
+                                        <label for="">{{$attr->name}} :</label>
+                                        <select class="form-control" name="product_attributes[{{$attr->name}}]" id="">
+                                            <option value="">--no value--</option>
+                                            @foreach ($attr->values as $val)
+                                                <option {{(!empty(json_decode($dataTypeContent->product_attributes,true)[$attr->name]) && json_decode($dataTypeContent->product_attributes,true)[$attr->name] == $val->value) ? 'selected' : null }}>{{ $val->value }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </p>
+                            @endforeach
+
                         </div><!-- panel-body -->
 
                         <div class="panel-footer">
