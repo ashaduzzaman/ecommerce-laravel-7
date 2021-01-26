@@ -3853,44 +3853,109 @@ Product Details start
 /*======================================
    Login & Register CSS
 ========================================*/
-.signup {
+.signin {
     position: relative;
     z-index: 43;
 }
-.signup .form-main {
+.signin .form-main {
     box-shadow: 0px 0px 15px #0000001a;
     padding: 50px;
 }
 
-/* .signup-title{
+.signin .form .form-group input {
+	height: 48px;
+	line-height: 48px;
+	width: 100%;
+	border: 1px solid #e6e2f5;
+	padding: 0px 20px;
+	color: #333;
+	border-radius: 0px;
+	font-weight: 400;
+}
+
+.signin .form .button .btn {
+	height: 50px;
+	border: none;
+}
+
+.signin .form .forgot-pass-link a{
+    color: #0C1555;
+    float: right;
+}
+
+@media only screen and (max-width: 900px) {
+    .signin .form .forgot-pass-link a {
+        float:none;
+        margin-top: 5px;
+    }
+}
+.signin .forgot-pass-link a:hover{
+    color: #F7941D;
+}
+
+@media only screen and (max-width: 900px) {
+    .signin-third-party{
+        margin-top: 25px;
+    }
+}
+
+.third-party-signin-btn{
+    width: 100%;
+}
+
+.third-party-signin-fb{
+    background: #3b5998;
+    height: 50px;
+    line-height: 50px;
+    margin: 8px 0px;
+    color: #fff;
+}
+.third-party-signin-fb i{
+    margin-right: 20px;
+    font-size: 16px;
+}
+
+.third-party-signin-google{
+    background: #d34836;
+    height: 50px;
+    line-height: 50px;
+    margin: 8px 0px;
+    color: #fff;
+}
+.third-party-signin-google i{
+    margin-right: 20px;
+    font-size: 16px;
+}
+
+/* .signin-title{
     margin: 50px auto 15px;
     height: 26px;
     line-height: 26px;
 } */
 
-.login-title,
-.login-other {
+.signin-title,
+.signin-other {
     margin: 50px auto 15px;
     height: 26px;
     line-height: 26px;
 }
 
-.login-title h3 {
+.signin-title h3 {
     font-size: 22px;
     color: #333;
     font-weight: 400;
 }
-.login-other{
+.signin-other{
 	color:	#757575;
 }
 
-.login-other a{
-	color: #666;
+.signin-other a{
+	color: #0C1555;
 }
 
-.login-other a:hover{
-	color: #fff;
-	background:#F7941D;
+.signin-other a:hover{
+	color: #F7941D;
+	/* background:#F7941D; */
 }
 .shop.login {
 	padding: 100px 0;
