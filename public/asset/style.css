@@ -129,6 +129,17 @@ Version:1.0
 	background:#FF1D38;
 }
 /* Preloader */
+
+/* Preloader Svg */
+
+.preloader svg {
+    width: 450px;
+    height: 450px;
+    visibility: hidden;
+}
+
+/* Preloader Svg End*/
+
 .preloader {
   position: fixed;
   top: 0;
@@ -628,7 +639,7 @@ Version:1.0
 }
 .header.shop .logo {
 	float: left;
-	margin: 19px 0 0;
+	margin: 17px 0 0;
 }
 .header.shop .top-contact {
 	margin-top:0px;
@@ -1218,7 +1229,7 @@ Version:1.0
 }
 .hero-slider .single-slider {
 	height: auto;
-	background-image: url('https://via.placeholder.com/1900x700');
+	background-image: url('/images/nissan-x-trail-banner.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -1527,6 +1538,27 @@ Version:1.0
 
 /*======================================
    End Hero Area CSS
+========================================*/
+/*======================================
+   Start Single product
+========================================*/
+.single-product .product-img{
+    background-color: rgba(187, 187, 187,0.5);
+    backdrop-filter: blur(2rem);
+}
+
+.single-product .product-img .default-img{
+    width: 262.500px;
+    height: 357.953px;
+}
+
+.single-product .product-img .hover-img{
+    width: 262.500px;
+    height: 357.953px;
+}
+
+/*======================================
+   End Single product
 ========================================*/
 
 /*======================================
@@ -2319,6 +2351,11 @@ Product Details start
   .product-details-4 .easyzoom a img {
       width: 100%;
   }
+
+  .product-details-5.pr-70{
+    background-color: rgba(187, 187, 187,0.5);
+  }
+
   .product-details-5.pr-70 > img {
       width: 100%;
   }
@@ -3677,7 +3714,7 @@ Product Details start
 }
 .shop.checkout .nice-select {
 	width: 100%;
-	height: 45px;
+	/* height: 45px; */
 	line-height: 50px;
 	margin-bottom: 25px;
 	background: #F6F7FB;
@@ -3686,8 +3723,8 @@ Product Details start
 }
 .shop.checkout .nice-select .list {
 	width: 100%;
-	height: 300px;
-	overflow: scroll;
+	/* height: 300px; */
+	overflow: hidden;
 }
 .shop.checkout .nice-select .list li{}
 .shop.checkout .nice-select .list li.option{
@@ -3771,12 +3808,25 @@ Product Details start
 	font-weight: 400;
 	color: #333;
 }
+
+.shop.checkout .single-widget .content {
+	margin-top:30px;
+}
+
+.shop.checkout .single-widget .form-check {
+	text-align: left;
+	margin: 0;
+	padding: 0px 30px;
+	/* margin-top:30px; */
+}
+
 .shop.checkout .single-widget .checkbox {
 	text-align: left;
 	margin: 0;
 	padding: 0px 30px;
 	margin-top:30px;
 }
+
 .shop.checkout .single-widget .checkbox label {
 	color: #555555;
 	position: relative;
@@ -3787,6 +3837,7 @@ Product Details start
 	display: block;
 	margin-bottom: 15px;
 }
+
 .shop.checkout .single-widget .checkbox label:last-child{
 	margin-bottom:0;
 }
@@ -3828,6 +3879,7 @@ Product Details start
 	visibility:visible;
 	transform:scale(1);
 }
+
 .shop.checkout .single-widget.payement {
 	padding: 0px 38px;
 	text-align: center;
@@ -3846,6 +3898,11 @@ Product Details start
 	text-transform: uppercase;
 	color: #fff;
 }
+
+.shop.checkout .single-widget.get-button .btn:hover {
+	cursor: pointer;
+}
+
 /*======================================
    End Checkout Form CSS
 ========================================*/
@@ -4104,6 +4161,210 @@ Product Details start
 	End Login CSS
 ========================================*/
 
+/*======================================
+   Start User Profile CSS
+========================================*/
+
+.user-profile {
+	position: relative;
+	z-index: 43;
+}
+.user-profile .title{
+	margin-bottom: 30px;
+}
+.user-profile .title h4 {
+	font-size: 17px;
+	font-weight: 500;
+	margin-bottom: 5px;
+	color: #F7941D;
+}
+.user-profile .title h3 {
+	font-size: 25px;
+	text-transform: capitalize;
+	font-weight: 600;
+}
+.user-profile .profile-left-sidebar {
+	padding: 50px;
+	box-shadow: 0px 0px 15px #0000001a;
+	height: 100%;
+}
+
+.user-profile .profile-left-sidebar .profile-display{
+    list-style: none;
+    /* border-bottom: 1px solid #e6e2f5; */
+
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-profile .profile-left-sidebar .profile-display .display-column{
+    /* margin-bottom: 20px; */
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.user-profile .profile-left-sidebar .profile-display .display-column{
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px){
+    .user-profile .profile-left-sidebar .profile-display .display-column{
+        margin-bottom: 10px;
+    }
+}
+
+.user-profile .profile-left-sidebar .sidebar-tabs{
+    margin-top: 4rem;
+}
+
+@media (max-width: 768px){
+    .user-profile .profile-left-sidebar .sidebar-tabs{
+        margin-top: 2rem;
+    }
+}
+
+.user-profile .profile-left-sidebar .profile-display .display-column img{
+    height: 100px;
+    width: 100px;
+}
+
+/* .user-profile .profile-left-sidebar .sidebar-tabs{
+    margin-top: 20px;
+} */
+
+.user-profile .profile-left-sidebar .sidebar-tabs .red .active a,
+.user-profile .profile-left-sidebar .sidebar-tabs .red .active a:hover{
+    background-color: red !important;
+}
+
+.user-profile .profile-left-sidebar .sidebar-tabs .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color: rgba(238,238,238,0.65);
+    color: #F7941D;
+}
+
+.user-profile .profile-left-sidebar .sidebar-tabs .nav-link svg{
+    height: 18px;
+    width: 18px;
+}
+
+.user-profile .profile-left-sidebar .sidebar-tabs .nav-link .tab-link-content{
+    font-size: 16px;
+}
+
+@media (max-width: 768px){
+    .user-profile .profile-left-sidebar .sidebar-tabs .nav-link .tab-link-content{
+        font-size: 14px;
+    }
+}
+
+.user-profile .account-block form{
+    margin: 15px 0 0;
+}
+
+.user-profile .callout{
+    padding: 0 15px;
+}
+
+.user-profile .callout h4{
+    font-size: 16px;
+}
+
+.user-profile .single-info {
+	text-align: left;
+	margin-bottom:30px;
+}
+.user-profile .single-info i {
+	color: #fff;
+	font-size: 18px;
+	display: inline-block;
+	margin-bottom: 15px;
+	height: 40px;
+	width: 40px;
+	display: block;
+	text-align: center;
+	border-radius: 3px;
+	line-height: 40px;
+	background:#F7941D;
+}
+.user-profile .single-info ul
+.user-profile .single-info ul li{
+	margin-bottom:5px;
+}
+.user-profile .single-info ul li:last-child{
+	margin-bottom:0;
+}
+.user-profile .single-info ul li a{
+	font-weight:400;
+}
+.user-profile .single-info ul li a:hover{
+	color:#F7941D;
+}
+.user-profile .single-info .title {
+	margin-bottom: 10px;
+	font-weight: 500;
+	color: #333;
+	font-size: 18px;
+}
+.user-profile .form-main {
+	box-shadow: 0px 0px 15px #0000001a;
+	padding: 50px;
+}
+.user-profile .form .form-group input {
+	height: 48px;
+	line-height: 48px;
+	width: 100%;
+	border: 1px solid #e6e2f5;
+	padding: 0px 20px;
+	color: #333;
+	border-radius: 0px;
+	font-weight: 400;
+}
+.user-profile .form .form-group textarea {
+	height: 180px;
+	width: 100%;
+	border: 1px solid #e6e2f5;
+	padding: 15px 20px;
+	color: #333;
+	border-radius: 0px;
+	resize: none;
+	font-weight:400;
+}
+.user-profile .form .form-group label {
+	color: #333;
+	position: relative;
+}
+.user-profile .form .form-group label span {
+	color: #ff2c18;
+	display: inline-block;
+	position: absolute;
+	right: -12px;
+	top: 4px;
+	font-size: 16px;
+}
+.user-profile .form .button {
+	margin:0;
+}
+.user-profile .form .button .btn {
+	height: 50px;
+	border: none;
+}
+.user-profile .profile-head{
+
+}
+
+/*======================================
+   Start User Profile CSS
+========================================*/
 /*======================================
    Start Shop List CSS
 ========================================*/
@@ -5418,7 +5679,10 @@ Product Details start
 .footer .about .logo{
 	margin-bottom:20px;
 }
-.footer .about .logo img{}
+.footer .about .logo img{
+    height: auto;
+    width: 50%;
+}
 .footer .about .text{
 	color:#fff;
 	font-weight: 400;

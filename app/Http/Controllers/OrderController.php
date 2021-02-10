@@ -35,6 +35,8 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request->all());
         $request->validate([
             'shipping_fullname' => 'required',
             'shipping_state' => 'required',
@@ -46,7 +48,7 @@ class OrderController extends Controller
 
         $order = new Order();
 
-        $order->order_number = uniqid('OrderNumber-');
+        $order->order_number = uniqid('MTSB-');
         $order->user_id = auth()->id();
         $order->grand_total = \Cart::session(auth()->id())->getTotal();
         $order->item_count = \Cart::session(auth()->id())->getContent()->count();

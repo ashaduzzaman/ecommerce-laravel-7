@@ -23,14 +23,14 @@
                                         <p class="product-name"><a href="#">{{ $cartItem['name'] }}</a></p>
                                         {{-- <p class="product-des">{{ $cartItem->associatedModel->description }}</p> --}}
                                     </td>
-                                    <td class="price" data-title="Price"><span>${{ $cartItem['price'] }}</span></td>
+                                    <td class="price" data-title="Price"><span>৳{{ $cartItem['price'] }}</span></td>
                                     <td class="qty" data-title="Qty"><!-- Input Order -->
                                         <div class="input-group">
                                             <livewire:cart-update-form :cartItem="$cartItem" :key="$cartItem['id']"/>
                                         </div>
                                         <!--/ End Input Order -->
                                     </td>
-                                    <td class="total-amount" data-title="Total"><span>${{ Cart::session(auth()->id())->get($cartItem['id'])->getPriceSum() }}</span></td>
+                                    <td class="total-amount" data-title="Total"><span>৳{{ Cart::session(auth()->id())->get($cartItem['id'])->getPriceSum() }}</span></td>
                                     <td class="action" data-title="Remove"><a href="{{ route('cart.destroy', $cartItem['id']) }}"><i class="ti-trash remove-icon"></i></a></td>
                                 </tr>
                             @endforeach
@@ -60,9 +60,9 @@
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
-										<li>Cart Subtotal<span>${{ \Cart::session(auth()->id())->getTotal() }}</span></li>
+										<li>Cart Subtotal<span>৳{{ \Cart::session(auth()->id())->getTotal() }}</span></li>
 										<li>Shipping<span>Free</span></li>
-										<li class="last">You Pay<span>${{ \Cart::session(auth()->id())->getTotal() }}</span></li>
+										<li class="last">You Pay<span>৳{{ \Cart::session(auth()->id())->getTotal() }}</span></li>
 									</ul>
 									<div class="button5">
 										<a href="{{ route('cart.checkout') }}" class="btn">Checkout</a>

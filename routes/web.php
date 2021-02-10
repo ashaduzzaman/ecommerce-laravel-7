@@ -13,7 +13,7 @@
 
 Route::redirect('/', '/home');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -21,15 +21,20 @@ Route::get('products', 'ProductController@index')->name('products.index');
 Route::get('products/{id}', 'ProductController@show')->name('products.show');
 Route::get('/products/search','ProductController@search')->name('product.search');
 
-Route::get('/add-to-cart/{product}', 'CartController@add')->name('cart.add')->middleware('auth');
-Route::get('/cart', 'CartController@index')->name('cart.index')->middleware('auth');
-Route::get('/cart/destroy/{itemId}', 'CartController@destroy')->name('cart.destroy')->middleware('auth');
-Route::get('/cart/update/{itemId}', 'CartController@update')->name('cart.update')->middleware('auth');
-Route::get('/cart/checkout', 'CartController@checkout')->name('cart.checkout')->middleware('auth');
-Route::get('/cart/apply-coupon', 'CartController@applyCoupon')->name('cart.coupon')->middleware('auth');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/add-to-cart/{product}', 'CartController@add')->name('cart.add');
+    Route::get('/cart', 'CartController@index')->name('cart.index');
+    Route::get('/cart/destroy/{itemId}', 'CartController@destroy')->name('cart.destroy');
+    Route::get('/cart/update/{itemId}', 'CartController@update')->name('cart.update');
+    Route::get('/cart/checkout', 'CartController@checkout')->name('cart.checkout');
+    Route::get('/cart/apply-coupon', 'CartController@applyCoupon')->name('cart.coupon');
 
-Route::resource('orders', 'OrderController')->middleware('auth');
-Route::resource('shops', 'ShopController')->middleware('auth');
+    Route::resource('orders', 'OrderController');
+    Route::resource('shops', 'ShopController');
+    Route::get('/account', 'AccountController@index')->name('account.index');
+    Route::post('/account/update', 'AccountController@update')->name('account.update');
+    Route::post('/account/change-password', 'AccountController@changePassword')->name('account.changePassword');
+});
 
 Route::get('paypal/checkout/{order}', 'PaypalController@getExpressCheckout')->name('paypal.checkout');
 Route::get('paypal/checkout-success/{order}', 'PaypalController@getExpressCheckoutSuccess')->name('paypal.success');

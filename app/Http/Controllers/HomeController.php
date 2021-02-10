@@ -27,6 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::take(20)->get();
+        // dd($products->all());
         if(Auth::guest()){
             $cartItems = \Cart::session('_token')->getContent();
         }else{

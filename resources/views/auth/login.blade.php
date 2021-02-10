@@ -30,7 +30,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="email">{{ __('E-Mail Address') }}</label>
-                                        <input id="email" type="email" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -38,8 +38,6 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    {{-- <div class="col-md-6"> --}}
-                                    {{-- </div> --}}
                                 </div>
 
                                 <div class="col-12">

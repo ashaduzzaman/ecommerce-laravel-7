@@ -2,7 +2,7 @@
     <div class="single-product">
         <div class="product-img">
             <a href="{{route('products.show', $product->id)}}">
-                <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
+                <img class="default-img" src="{{ '/storage/'.$product->cover_img }}" alt="#">
                 <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
             </a>
             <div class="button-head">
@@ -20,7 +20,7 @@
         <div class="product-content">
             <h3><a href="{{route('products.show', $product->id)}}">{{ $product->name }}</a></h3>
             <div class="product-price">
-                <span>${{ $product->price }}</span>
+                <span>৳{{ $product->price }}</span>
             </div>
         </div>
     </div>

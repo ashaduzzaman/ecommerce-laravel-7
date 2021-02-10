@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12 col-lg-7 col-12">
                 <div class="product-details-5 pr-70">
-                    <img src="https://via.placeholder.com/600x656" alt="">
+                    <img src="{{ '/storage/'. $product->cover_img}}" alt="">
                 </div>
             </div>
             <div class="col-md-12 col-lg-5 col-12">
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="details-price">
-                        <span>${{ $product->price }}</span>
+                        <span>৳{{ $product->price }}</span>
                     </div>
                     <p>{{ $product->description }}</p>
                     {{-- <div class="product-color-2">

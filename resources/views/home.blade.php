@@ -6,11 +6,15 @@
         <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
         <ul class="main-category">
             @foreach ($categories as $category)
-                <li><a href="{{ route('products.index', ['category_id' => $category->id]) }}">{{ $category->name }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
                     @php
                             // echo $category->id;
                         $children = TCG\Voyager\Models\Category::where('parent_id', $category->id)->get();
                     @endphp
+                    @if ($children->isNotEmpty())
+                    <li><a href="{{ route('products.index', ['category_id' => $category->id]) }}">{{ $category->name }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    @else
+                    <li><a href="{{ route('products.index', ['category_id' => $category->id]) }}">{{ $category->name }}</a>
+                    @endif
                     @if($children->isNotEmpty())
                         <ul class="sub-category">
                             @foreach ($children as $child)
@@ -36,11 +40,11 @@
                             <div class="row">
                                 <div class="col-lg-7 col-12">
                                     <div class="hero-text">
-                                        <h1><span>UP TO 50% OFF </span>Shirt For Man</h1>
+                                        {{-- <h1><span>UP TO 50% OFF </span>Shirt For Man</h1>
                                         <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
                                         <div class="button">
                                             <a href="#" class="btn">Shop Now!</a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -74,8 +78,8 @@
                                         <div class="single-product">
                                             <div class="product-img">
                                                 <a href="{{route('products.show', $product->id)}}">
-                                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-                                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+                                                    <img class="default-img" src="{{ '/storage/'.$product->cover_img }}" alt="#">
+                                                    <img class="hover-img" src="{{ '/storage/'.$product->cover_img }}" alt="#">
                                                 </a>
                                                 <div class="button-head">
                                                     <div class="product-action">
@@ -92,7 +96,7 @@
                                             <div class="product-content">
                                                 <h3><a href="product-details.html">{{ $product->name }}</a></h3>
                                                 <div class="product-price">
-                                                    <span>${{ $product->price }}</span>
+                                                    <span>৳{{ $product->price }}</span>
                                                 </div>
                                             </div>
                                         </div>
