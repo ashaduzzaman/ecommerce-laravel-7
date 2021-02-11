@@ -315,11 +315,11 @@ Version:1.0
 	  Preloader JS
 	======================================*/
 	//After 2s preloader is fadeOut
-	$('.preloader').delay(2000).fadeOut('slow');
+	$('.preloader').delay(1000).fadeOut('slow');
 	setTimeout(function() {
 	//After 2s, the no-scroll class of the body will be removed
 	$('body').removeClass('no-scroll');
-	}, 2000); //Here you can change preloader time
+	}, 1000); //Here you can change preloader time
 
     TweenMax.set('#circlePath', {
         attr: {

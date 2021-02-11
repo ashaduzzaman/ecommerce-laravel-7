@@ -7,7 +7,6 @@
         <ul class="main-category">
             @foreach ($categories as $category)
                     @php
-                            // echo $category->id;
                         $children = TCG\Voyager\Models\Category::where('parent_id', $category->id)->get();
                     @endphp
                     @if ($children->isNotEmpty())

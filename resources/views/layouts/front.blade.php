@@ -10,38 +10,38 @@
 	<!-- Title Tag  -->
     <title>Motor Sheba Limited | Online Auto Parts Shop And Service</title>
 	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="images/favicon-32x32.png">
+	<link rel="icon" type="image/png" href="{{ asset('/publicimages/favicon-32x32.png') }}">
 	<!-- Web Font -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
 	<!-- StyleSheet -->
 
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="/asset/css/bootstrap.css">
+	<link rel="stylesheet" href="{{ asset('/public/asset/css/bootstrap.css') }}">
 	<!-- Magnific Popup -->
-    <link rel="stylesheet" href="/asset/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="{{ asset('/public/asset/css/magnific-popup.min.css') }}">
 	<!-- Font Awesome -->
-    <link rel="stylesheet" href="/asset/css/font-awesome.css">
+    <link rel="stylesheet" href="{{ asset('/public/asset/css/font-awesome.css') }}">
 	<!-- Fancybox -->
-	<link rel="stylesheet" href="/asset/css/jquery.fancybox.min.css">
+	<link rel="stylesheet" href="{{ asset('/public/asset/css/jquery.fancybox.min.css') }}">
 	<!-- Themify Icons -->
-    <link rel="stylesheet" href="/asset/css/themify-icons.css">
+    <link rel="stylesheet" href="{{ asset('/public/asset/css/themify-icons.css') }}">
 	<!-- Nice Select CSS -->
-    <link rel="stylesheet" href="/asset/css/niceselect.css">
+    <link rel="stylesheet" href="{{ asset('/public/asset/css/niceselect.css') }}">
 	<!-- Animate CSS -->
-    <link rel="stylesheet" href="/asset/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('/public/asset/css/animate.css') }}">
 	<!-- Flex Slider CSS -->
-    <link rel="stylesheet" href="/asset/css/flex-slider.min.css">
+    <link rel="stylesheet" href="{{ asset('/public/asset/css/flex-slider.min.css') }}">
 	<!-- Owl Carousel -->
-    <link rel="stylesheet" href="/asset/css/owl-carousel.css">
+    <link rel="stylesheet" href="{{ asset('/public/asset/css/owl-carousel.css') }}">
 	<!-- Slicknav -->
-    <link rel="stylesheet" href="/asset/css/slicknav.min.css">
+    <link rel="stylesheet" href="{{ asset('/public/asset/css/slicknav.min.css') }}">
 
 	<!-- Eshop StyleSheet -->
-	<link rel="stylesheet" href="/asset/css/reset.css">
-	<link rel="stylesheet" href="/asset/style.css">
-	<link rel="stylesheet" href="/asset/bundle.css">
-    <link rel="stylesheet" href="/asset/css/responsive.css">
+	<link rel="stylesheet" href="{{ asset('/public/asset/css/reset.css') }}">
+	<link rel="stylesheet" href="{{ asset('/public/asset/style.css') }}">
+	<link rel="stylesheet" href="{{ asset('/public/asset/bundle.css') }}">
+    <link rel="stylesheet" href="{{ asset('/public/asset/css/responsive.css') }}">
     @livewireStyles
 
 
@@ -135,7 +135,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-                            <a href="{{ route('home') }}"><img src="/images/Motor-Sheba-Logo.png" alt="logo"></a>
+                            <a href="{{ route('home') }}"><img src="{{ asset('/public/images/Motor-Sheba-Logo.png') }}" alt="logo"></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
@@ -339,7 +339,7 @@
                                 <h4>Download</h4>
 							<div class="logo">
 								{{-- <a href="index.html"><img src="/images/Motor-Sheba-Logo.png" alt="#"></a> --}}
-								<a href="#"><img src="/images/google-play-badge.png" alt="#"></a>
+								<a href="#"><img src="{{ asset('/public/images/google-play-badge.png') }}" alt="#"></a>
 							</div>
 							{{-- <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p> --}}
 							{{-- <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">(+880) 9610-223344</a></span></p> --}}
@@ -423,41 +423,41 @@
 	<!-- /End Footer Area -->
 
 	<!-- Jquery -->
-    <script src="/asset/js/jquery.min.js"></script>
-    <script src="/asset/js/jquery-migrate-3.0.0.js"></script>
-	<script src="/asset/js/jquery-ui.min.js"></script>
+    <script src="{{ asset('/public/asset/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('/public/asset/js/jquery-migrate-3.0.0.js') }}"></script>
+	<script src="{{ asset('/public/asset/js/jquery-ui.min.js') }}"></script>
 	<!-- Popper JS -->
-	<script src="/asset/js/popper.min.js"></script>
+	<script src="{{ asset('/public/asset/js/popper.min.js') }}"></script>
 	<!-- Bootstrap JS -->
-	<script src="/asset/js/bootstrap.min.js"></script>
+	<script src="{{ asset('/public/asset/js/bootstrap.min.js') }}"></script>
 	<!-- Color JS -->
-	<script src="/asset/js/colors.js"></script>
+	<script src="{{ asset('/public/asset/js/colors.js') }}"></script>
 	<!-- Slicknav JS -->
-	<script src="/asset/js/slicknav.min.js"></script>
+	<script src="{{ asset('/public/asset/js/slicknav.min.js') }}"></script>
 	<!-- Owl Carousel JS -->
-	<script src="/asset/js/owl-carousel.js"></script>
+	<script src="{{ asset('/public/asset/js/owl-carousel.js') }}"></script>
 	<!-- Magnific Popup JS -->
-	<script src="/asset/js/magnific-popup.js"></script>
+	<script src="{{ asset('/public/asset/js/magnific-popup.js') }}"></script>
 	<!-- Waypoints JS -->
-	<script src="/asset/js/waypoints.min.js"></script>
+	<script src="{{ asset('/public/asset/js/waypoints.min.js') }}"></script>
 	<!-- Countdown JS -->
-	<script src="/asset/js/finalcountdown.min.js"></script>
+	<script src="{{ asset('/public/asset/js/finalcountdown.min.js') }}"></script>
 	<!-- Nice Select JS -->
-	<script src="/asset/js/nicesellect.js"></script>
+	<script src="{{ asset('/public/asset/js/nicesellect.js') }}"></script>
 	<!-- Flex Slider JS -->
-	<script src="/asset/js/flex-slider.js"></script>
+	<script src="{{ asset('/public/asset/js/flex-slider.js') }}"></script>
 	<!-- ScrollUp JS -->
-	<script src="/asset/js/scrollup.js"></script>
+	<script src="{{ asset('/public/asset/js/scrollup.js') }}"></script>
 	<!-- Onepage Nav JS -->
-	<script src="/asset/js/onepage-nav.min.js"></script>
+	<script src="{{ asset('/public/asset/js/onepage-nav.min.js') }}"></script>
 	<!-- Easing JS -->
-	<script src="/asset/js/easing.js"></script>
-    <script src="/asset/js/TweenMax.min.js"></script>
-    <script src="/asset/js/MorphSVGPlugin.min.js"></script>
+	<script src="{{ asset('/public/asset/js/easing.js') }}"></script>
+    <script src="{{ asset('/public/asset/js/TweenMax.min.js') }}"></script>
+    <script src="{{ asset('/public/asset/js/MorphSVGPlugin.min.js') }}"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.3/TweenMax.min.js"></script> --}}
 	<!-- Active JS -->
-    <script src="/asset/js/active.js"></script>
-    <script src="/asset/js/custom.js"></script>
+    <script src="{{ asset('/public/asset/js/active.js') }}"></script>
+    <script src="{{ asset('/public/asset/js/custom.js') }}"></script>
     @yield('scripts')
     @livewireScripts
 </body>
