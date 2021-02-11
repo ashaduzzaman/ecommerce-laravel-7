@@ -35,6 +35,15 @@ Version:1.0
 20. 404 Error CSS
 21. Footer CSS
 ========================================*/
+
+body{
+    background: #f1f2f6;
+    color: #424646;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+}
 .color-plate {
 	position: fixed;
 	display: block;
@@ -1543,8 +1552,10 @@ Version:1.0
    Start Single product
 ========================================*/
 .single-product .product-img{
-    background-color: rgba(187, 187, 187,0.5);
-    backdrop-filter: blur(2rem);
+    background: #fff;
+    /* background-color: rgba(187, 187, 187,0.5); */
+    /* background: linear-gradient(to right bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+    backdrop-filter: blur(2rem); */
 }
 
 .single-product .product-img .default-img{
@@ -1961,6 +1972,7 @@ Version:1.0
 }
 .single-product .button-head {
 	background: #fff;
+	/* background: #f1f2f6; */
 	display: inline-block;
 	height: 40px;
 	width: 100%;
