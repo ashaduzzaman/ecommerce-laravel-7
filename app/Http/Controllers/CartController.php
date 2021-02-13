@@ -9,15 +9,20 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public static function add(Product $product)
+    public static function add(Product $product, Request $request)
     {
+        // dd($request->all());
+        $product_quantity = 1;
+        if($request->has('quanttity')){
+            $product_quantity = $request['quanttity'];
+        }
         $userID = auth()->id();
         // add the product to cart
         \Cart::session($userID)->add(array(
             'id' => $product->id,
             'name' => $product->name,
             'price' => $product->price,
-            'quantity' => 1,
+            'quantity' => $product_quantity,
             'attributes' => array(),
             'associatedModel' => $product
         ));
@@ -28,6 +33,9 @@ class CartController extends Controller
     public function index()
     {
         $cartItems = \Cart::session(auth()->id())->getContent();
+        // foreach($cartItems as $cartItem){
+        //     dd($cartItem['associatedModel']->cover_img);
+        // }
         return view('cart.index', get_defined_vars());
     }
 

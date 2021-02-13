@@ -18,9 +18,9 @@
 						<tbody>
                             @foreach ($cartItems as $cartItem)
                                 <tr>
-                                    <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
+                                    <td class="image" data-title="No"><img src="{{ asset('public/storage/'.$cartItem['associatedModel']['cover_img']) }}" alt="#"></td>
                                     <td class="product-des" data-title="Description">
-                                        <p class="product-name"><a href="#">{{ $cartItem['name'] }}</a></p>
+                                        <p class="product-name"><a href="#">{{ strlen($cartItem['name']) > 50 ? substr($cartItem['name'],0,50).'...' : $cartItem['name'] }}</a></p>
                                         {{-- <p class="product-des">{{ $cartItem->associatedModel->description }}</p> --}}
                                     </td>
                                     <td class="price" data-title="Price"><span>৳{{ $cartItem['price'] }}</span></td>

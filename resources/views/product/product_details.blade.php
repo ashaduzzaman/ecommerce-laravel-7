@@ -5,121 +5,241 @@
 <div class="product-details ptb-100 pb-90">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-lg-7 col-12">
-                <div class="product-details-5 pr-70">
-                    <img src="{{ '/storage/'. $product->cover_img}}" alt="">
-                </div>
-            </div>
-            <div class="col-md-12 col-lg-5 col-12">
-                <div class="sidebar-active product-details-content">
-                    <h3>{{ $product->name }}</h3>
-                    <div class="rating-number">
-                        <div class="quick-view-rating">
-                            <i class="pe-7s-star red-star"></i>
-                            <i class="pe-7s-star red-star"></i>
-                            <i class="pe-7s-star"></i>
-                            <i class="pe-7s-star"></i>
-                            <i class="pe-7s-star"></i>
-                        </div>
-                        <div class="quick-view-number">
-                            <span>2 Ratting (S)</span>
-                        </div>
+            <div class="col-md-3 col-lg-3 col-12 d-none d-sm-block">
+                <div class="shop-sidebar">
+                    <!-- Single Widget -->
+                    <div class="single-widget category">
+                        <h3 class="title">Categories</h3>
+                        <ul class="categor-list">
+                            @foreach ($categories as $category)
+                                <li><a href="{{ route('products.index', ['category_id' => $category->id]) }}">{{ $category->name }}</a>
+                            @endforeach
+                        </ul>
                     </div>
-                    <div class="details-price">
-                        <span>৳{{ $product->price }}</span>
-                    </div>
-                    <p>{{ $product->description }}</p>
-                    {{-- <div class="product-color-2">
-                        <h4 class="details-title">Color*</h4>
-                        <div class="product-color-style2">
-                            <ul>
-                                <li class="orange"></li>
-                                <li class="blue2"></li>
-                                <li class="pink"></li>
-                                <li class="yellow"></li>
-                            </ul>
-                        </div>
-                    </div> --}}
-                    {{-- <div class="product-size-2">
-                        <h4 class="details-title">Size*</h4>
-                        <div class="product-size-style2">
-                            <ul>
-                                <li><a href="#">xl</a></li>
-                                <li><a href="#">ml</a></li>
-                                <li><a href="#">m</a></li>
-                                <li><a href="#">sl</a></li>
-                                <li><a href="#">ls</a></li>
-                            </ul>
-                        </div>
-                    </div> --}}
-                    <div class="quickview-plus-minus">
-                        <div class="description-qty" data-title="Qty">
-                            <div class="input-group">
-                                <div class="button minus">
-                                    <button type="button" class="btn btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                        <i class="ti-minus"></i>
-                                    </button>
-                                </div>
-                                <input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="100" value="1">
-                                <div class="button plus">
-                                    <button type="button" class="btn btn-number" data-type="plus" data-field="quant[1]">
-                                        <i class="ti-plus"></i>
-                                    </button>
+                    {{-- <div class="single-widget range">
+                        <h3 class="title">Shop by Price</h3>
+                        <div class="price-filter">
+                            <div class="price-filter-inner">
+                                <div id="slider-range"></div>
+                                    <div class="price_slider_amount">
+                                    <div class="label-input">
+                                        <span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Price"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="quickview-btn-cart">
-                            <a class="btn-hover-black" href="{{route('cart.add', $product->id)}}">add to cart</a>
+                        <ul class="check-box-list">
+                            <li>
+                                <label class="checkbox-inline" for="1"><input name="news" id="1" type="checkbox">$20 - $50<span class="count">(3)</span></label>
+                            </li>
+                            <li>
+                                <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">$50 - $100<span class="count">(5)</span></label>
+                            </li>
+                            <li>
+                                <label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox">$100 - $250<span class="count">(8)</span></label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="single-widget recent-post">
+                        <h3 class="title">Recent post</h3>
+                        <!-- Single Post -->
+                        <div class="single-post first">
+                            <div class="image">
+                                <img src="https://via.placeholder.com/75x75" alt="#">
+                            </div>
+                            <div class="content">
+                                <h5><a href="#">Girls Dress</a></h5>
+                                <p class="price">$99.50</p>
+                                <ul class="reviews">
+                                    <li class="yellow"><i class="ti-star"></i></li>
+                                    <li class="yellow"><i class="ti-star"></i></li>
+                                    <li class="yellow"><i class="ti-star"></i></li>
+                                    <li><i class="ti-star"></i></li>
+                                    <li><i class="ti-star"></i></li>
+                                </ul>
+                            </div>
                         </div>
-                        {{-- <div class="quickview-btn-wishlist">
-                            <a class="btn-hover" href="#"><i class="pe-7s-like"></i></a>
-                        </div> --}}
+                        <!-- End Single Post -->
+                        <!-- Single Post -->
+                        <div class="single-post first">
+                            <div class="image">
+                                <img src="https://via.placeholder.com/75x75" alt="#">
+                            </div>
+                            <div class="content">
+                                <h5><a href="#">Women Clothings</a></h5>
+                                <p class="price">$99.50</p>
+                                <ul class="reviews">
+                                    <li class="yellow"><i class="ti-star"></i></li>
+                                    <li class="yellow"><i class="ti-star"></i></li>
+                                    <li class="yellow"><i class="ti-star"></i></li>
+                                    <li class="yellow"><i class="ti-star"></i></li>
+                                    <li><i class="ti-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End Single Post -->
+                        <!-- Single Post -->
+                        <div class="single-post first">
+                            <div class="image">
+                                <img src="https://via.placeholder.com/75x75" alt="#">
+                            </div>
+                            <div class="content">
+                                <h5><a href="#">Man Tshirt</a></h5>
+                                <p class="price">$99.50</p>
+                                <ul class="reviews">
+                                    <li class="yellow"><i class="ti-star"></i></li>
+                                    <li class="yellow"><i class="ti-star"></i></li>
+                                    <li class="yellow"><i class="ti-star"></i></li>
+                                    <li class="yellow"><i class="ti-star"></i></li>
+                                    <li class="yellow"><i class="ti-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End Single Post -->
                     </div>
-                    <div class="product-details-cati-tag mt-35">
-                        <ul>
-                            <li class="categories-title">Categories :</li>
-                            <li><a href="#">fashion</a></li>
-                            <li><a href="#">electronics</a></li>
-                            <li><a href="#">toys</a></li>
-                            <li><a href="#">food</a></li>
-                            <li><a href="#">jewellery</a></li>
-                        </ul>
-                    </div>
-                    <div class="product-details-cati-tag mtb-10">
-                        <ul>
-                            <li class="categories-title">Tags :</li>
-                            <li><a href="#">fashion</a></li>
-                            <li><a href="#">electronics</a></li>
-                            <li><a href="#">toys</a></li>
-                            <li><a href="#">food</a></li>
-                            <li><a href="#">jewellery</a></li>
-                        </ul>
-                    </div>
-                    {{-- <div class="product-share">
-                        <ul>
-                            <li class="categories-title">Share :</li>
-                            <li>
-                                <a href="#">
-                                    <i class="icofont icofont-social-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icofont icofont-social-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icofont icofont-social-pinterest"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icofont icofont-social-flikr"></i>
-                                </a>
-                            </li>
+                    <div class="single-widget category">
+                        <h3 class="title">Manufacturers</h3>
+                        <ul class="categor-list">
+                            <li><a href="#">Forever</a></li>
+                            <li><a href="#">giordano</a></li>
+                            <li><a href="#">abercrombie</a></li>
+                            <li><a href="#">ecko united</a></li>
+                            <li><a href="#">zara</a></li>
                         </ul>
                     </div> --}}
+                </div>
+                {{-- <div class="product-details-category">
+                    <h4>Product Categories</h4>
+                    <ul class="product-category">
+                        @foreach ($categories as $category)
+                            <li><a href="{{ route('products.index', ['category_id' => $category->id]) }}">{{ $category->name }}</a>
+                        @endforeach
+                    </ul>
+                </div> --}}
+            </div>
+            <div class="col-md-9 col-lg-9 col-12">
+                <div class="row">
+                    <div class="col-md-5 col-lg-5 col-12">
+                        <div class="product-details-5 pr-70">
+                            <img src="{{ asset('public/storage/'. $product->cover_img) }}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-7 col-12">
+                        <div class="sidebar-active product-details-content">
+                            <h3>{{ $product->name }}</h3>
+                            <div class="rating-number">
+                                <div class="quick-view-rating">
+                                    <i class="pe-7s-star red-star"></i>
+                                    <i class="pe-7s-star red-star"></i>
+                                    <i class="pe-7s-star"></i>
+                                    <i class="pe-7s-star"></i>
+                                    <i class="pe-7s-star"></i>
+                                </div>
+                                {{-- <div class="quick-view-number">
+                                    <span>2 Ratting (S)</span>
+                                </div> --}}
+                            </div>
+                            <div class="details-price">
+                                <span>৳ {{ $product->price }}</span>
+                            </div>
+                            {{-- <div class="product-color-2">
+                                <h4 class="details-title">Color*</h4>
+                                <div class="product-color-style2">
+                                    <ul>
+                                        <li class="orange"></li>
+                                        <li class="blue2"></li>
+                                        <li class="pink"></li>
+                                        <li class="yellow"></li>
+                                    </ul>
+                                </div>
+                            </div> --}}
+                            {{-- <div class="product-size-2">
+                                <h4 class="details-title">Size*</h4>
+                                <div class="product-size-style2">
+                                    <ul>
+                                        <li><a href="#">xl</a></li>
+                                        <li><a href="#">ml</a></li>
+                                        <li><a href="#">m</a></li>
+                                        <li><a href="#">sl</a></li>
+                                        <li><a href="#">ls</a></li>
+                                    </ul>
+                                </div>
+                            </div> --}}
+                            <div class="quickview-plus-minus">
+
+                                <div class="description-qty" data-title="Qty">
+                                    <div class="input-group">
+                                <form action="{{route('cart.add', $product->id)}}" type="post">
+                                @csrf
+                                        <div class="button minus">
+                                            <button type="button" class="btn btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                                <i class="ti-minus"></i>
+                                            </button>
+                                        </div>
+                                        <input type="text" name="quanttity" class="input-number"  data-min="1" data-max="100" value="1">
+                                        <div class="button plus">
+                                            <button type="button" class="btn btn-number" data-type="plus" data-field="quanttity">
+                                                <i class="ti-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="quickview-btn-cart">
+                                    <button class="btn" type="submit">add to cart</button>
+                                </div>
+                            </form>
+
+                                {{-- <div class="quickview-btn-wishlist">
+                                    <a class="btn-hover" href="#"><i class="pe-7s-like"></i></a>
+                                </div> --}}
+                            </div>
+                            <div class="product-details-cati-tag mt-35">
+                                <ul>
+                                    <li class="categories-title">Categories :</li>
+                                    <li><a href="#">fashion</a></li>
+                                    <li><a href="#">electronics</a></li>
+                                    <li><a href="#">toys</a></li>
+                                    <li><a href="#">food</a></li>
+                                    <li><a href="#">jewellery</a></li>
+                                </ul>
+                            </div>
+                            <div class="product-details-cati-tag mtb-10">
+                                <ul>
+                                    <li class="categories-title">Tags :</li>
+                                    <li><a href="#">fashion</a></li>
+                                    <li><a href="#">electronics</a></li>
+                                    <li><a href="#">toys</a></li>
+                                    <li><a href="#">food</a></li>
+                                    <li><a href="#">jewellery</a></li>
+                                </ul>
+                            </div>
+                            {{-- <div class="product-share">
+                                <ul>
+                                    <li class="categories-title">Share :</li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="icofont icofont-social-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="icofont icofont-social-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="icofont icofont-social-pinterest"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="icofont icofont-social-flikr"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div> --}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -138,7 +258,7 @@
             </div>
             <div class="description-review-text tab-content">
                 <div class="tab-pane active show fade" id="pro-dec" role="tabpanel">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in</p>
+                    <p>{{ $product->description }}</p>
                 </div>
                 <div class="tab-pane fade" id="pro-review" role="tabpanel">
                     <a href="#">Be the first to write your review!</a>

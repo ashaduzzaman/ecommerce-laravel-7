@@ -19,7 +19,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('products', 'ProductController@index')->name('products.index');
 Route::get('products/{id}', 'ProductController@show')->name('products.show');
-Route::get('/products/search','ProductController@search')->name('product.search');
+Route::get('products-search', 'ProductController@search')->name('products.search');
+// Route::get('products/search','ProductController@search')->name('product.search');
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/add-to-cart/{product}', 'CartController@add')->name('cart.add');

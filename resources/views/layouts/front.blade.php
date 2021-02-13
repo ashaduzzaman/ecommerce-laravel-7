@@ -10,7 +10,7 @@
 	<!-- Title Tag  -->
     <title>Motor Sheba Limited | Online Auto Parts Shop And Service</title>
 	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="{{ asset('/publicimages/favicon-32x32.png') }}">
+	<link rel="icon" type="image/png" href="{{ asset('/public/images/favicon-32x32.png') }}">
 	<!-- Web Font -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
@@ -162,7 +162,7 @@
 									<option>mobile</option>
 									<option>kid’s item</option>
 								</select> --}}
-								<form action="{{ route('product.search') }}" method="GET">
+								<form action="{{ route('products.search') }}" method="GET">
 									<input name="search" placeholder="Search Products Here....." type="search">
 									<button class="btnn" type="submit"><i class="ti-search"></i></button>
 								</form>
@@ -205,8 +205,8 @@
 											@foreach ($cartItems as $cartItem)
 												<li>
 													<a href="{{ route('cart.destroy', $cartItem->id) }}" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-													<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-												<h4><a href="{{ $cartItem->id }}">{{ $cartItem->name }}</a></h4>
+													<a class="cart-img" href="#"><img src="{{ asset('public/storage/'.$cartItem['associatedModel']['cover_img']) }}" alt="#"></a>
+												<h4><a href="{{ $cartItem->id }}">{{ strlen($cartItem->name) > 30 ? substr($cartItem->name,0,30).'...' : $cartItem->name     }}</a></h4>
 													<p class="quantity">{{ $cartItem->quantity }}x - <span class="amount">
 													@auth
                                                         ৳{{ Cart::session(auth()->id())->get($cartItem->id)->getPriceSum() }}

@@ -2,8 +2,8 @@
     <div class="single-product">
         <div class="product-img">
             <a href="{{route('products.show', $product->id)}}">
-                <img class="default-img" src="{{ '/storage/'.$product->cover_img }}" alt="#">
-                <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+                <img class="default-img" src="{{ asset('public/storage/'.$product->cover_img) }}" alt="#">
+                <img class="hover-img" src="{{ asset('public/storage/'.$product->cover_img) }}" alt="#">
             </a>
             <div class="button-head">
                 <div class="product-action">
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="product-content">
-            <h3><a href="{{route('products.show', $product->id)}}">{{ $product->name }}</a></h3>
+            <h3><a href="{{route('products.show', $product->id)}}">{{ strlen($product->name) > 50 ? substr($product->name,0,50).'...' : $product->name     }}</a></h3>
             <div class="product-price">
                 <span>৳{{ $product->price }}</span>
             </div>

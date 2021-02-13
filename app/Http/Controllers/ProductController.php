@@ -28,9 +28,12 @@ class ProductController extends Controller
             $category = Category::find($category_id);
             // $products = $category->products;
             $products = $category->allProducts();
+            // dd($products);
         }else{
             $products = Product::take(10)->get();
         }
+
+       $categories = Category::whereNull('parent_id')->get();
 
         return view('product.index', get_defined_vars());
     }
@@ -43,8 +46,9 @@ class ProductController extends Controller
 
        $products = Product::where('name', 'LIKE',"%$search_query%")->paginate(12);
        $cartItems = \Cart::session(auth()->id())->getContent();
+       $categories = Category::whereNull('parent_id')->get();
 
-       return view('product.catalog', compact('products','cartItems'));
+       return view('product.catalog', compact('products','cartItems','categories'));
    }
 
    public function show($id)
@@ -54,12 +58,8 @@ class ProductController extends Controller
         }else{
             $cartItems = \Cart::session(auth()->id())->getContent();
         }
-
         $product = Product::findOrFail($id);
-
-
-
-        // dd($product);
+        $categories = Category::whereNull('parent_id')->get();
 
        return view('product.product_details', get_defined_vars());
    }
