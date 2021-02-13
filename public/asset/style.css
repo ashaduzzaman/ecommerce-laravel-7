@@ -1212,7 +1212,8 @@ body{
 	position:fixed;
 	top:0;
 	left:0;
-	background:#0C1555;
+	/*background:#0C1555;*/
+	background: #333;
 	animation: fadeInDown 1s both 0.2s;
 	-webkit-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
 	-moz-box-shadow:0px 0px 10px rgba(0, 0, 0, 0.3);
@@ -1235,6 +1236,114 @@ body{
 /*======================================
    Hero Area CSS
 ========================================*/
+.slider{
+    /* width: 800px; */
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+}
+
+.slides{
+    width: 500%;
+    height: 500px;
+    display: flex;
+}
+
+.slides input{
+    display: none;
+}
+
+.slide{
+    width: 20%;
+    transition: 2s;
+}
+
+.slide img{
+    /* width: 800px; */
+    width: 100vw;
+    height: 500px;
+    object-fit: cover;
+}
+
+/* css for manual slide navigation */
+
+.navigation-manual{
+    display: none;
+    position: absolute;
+    width: 100%;
+    margin-top: -40px;
+    justify-content: center;
+}
+
+.manual-btn{
+    border: 2px solid #40D3DC;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.manual-btn:not(:last-child){
+    margin-right: 30px;
+}
+
+.manual-btn:hover{
+    background: #40D3DC;
+}
+
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+    margin-left: -20%;
+}
+
+#radio3:checked ~ .first{
+    margin-left: -40%;
+}
+
+#radio4:checked ~ .first{
+    margin-left: -60%;
+}
+
+/* css for automatic navigation */
+
+.navigation-auto{
+    position: absolute;
+    display: none;
+    width: 100%;
+    justify-content: center;
+    margin-top: 460px;
+}
+
+.navigation-auto div{
+    border: 2px solid #40D3DC;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 2s;
+}
+
+.navigation-auto div:not(:last-child){
+    margin-right: 30px;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1{
+    background: #40D3DC;
+}
+
+#radio2:checked ~ .navigation-auto .auto-btn2{
+    background: #40D3DC;
+}
+
+#radio3:checked ~ .navigation-auto .auto-btn3{
+    background: #40D3DC;
+}
+
+#radio4:checked ~ .navigation-auto .auto-btn4{
+    background: #40D3DC;
+}
+
 .hero-slider {
 	background: #fff;
 	overflow: hidden;
