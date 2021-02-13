@@ -29,8 +29,48 @@
 @endsection
 @section('content')
 	<!-- Slider Area -->
-    <section class="hero-slider">
-        <!-- Single Slider -->
+    <div class="slider">
+    <div class="slides">
+        {{-- radio button start --}}
+        <input type="radio" name="radio-btn" id="radio1">
+        <input type="radio" name="radio-btn" id="radio2">
+        <input type="radio" name="radio-btn" id="radio3">
+        <input type="radio" name="radio-btn" id="radio4">
+        {{-- radio button end --}}
+
+        <div class="slide first">
+            <img src="{{ asset('/public/images/nissan-x-trail-banner.jpg')}}" alt="">
+        </div>
+        <div class="slide">
+            <img src="{{ asset('/public/images/2021-toyota-c-hr-gr-sport.jpg')}}" alt="">
+        </div>
+        <div class="slide">
+            <img src="{{ asset('/public/images/honda-vezel-front-side-0-512210.jpg')}}" alt="">
+        </div>
+        <div class="slide">
+            <img src="{{ asset('/public/images/mitsubishi_outlander_cover.jpg')}}" alt="">
+        </div>
+
+        {{-- automatic navigation start --}}
+
+        <div class="navigation-auto">
+            <div class="auto-btn1"></div>
+            <div class="auto-btn2"></div>
+            <div class="auto-btn3"></div>
+            <div class="auto-btn4"></div>
+        </div>
+        {{-- automatic navigation end --}}
+    </div>
+    {{-- manual navigation start --}}
+    <div class="navigation-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+        <label for="radio4" class="manual-btn"></label>
+    </div>
+    {{-- manual navigation end --}}
+</div>
+    {{-- <section class="hero-slider">
         <div class="single-slider">
             <div class="container">
                 <div class="row no-gutters">
@@ -39,11 +79,6 @@
                             <div class="row">
                                 <div class="col-lg-7 col-12">
                                     <div class="hero-text">
-                                        {{-- <h1><span>UP TO 50% OFF </span>Shirt For Man</h1>
-                                        <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
-                                        <div class="button">
-                                            <a href="#" class="btn">Shop Now!</a>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -52,8 +87,7 @@
                 </div>
             </div>
         </div>
-        <!--/ End Single Slider -->
-    </section>
+    </section> --}}
 	<!--/ End Slider Area -->
 
 	<!-- Start Product Area -->
@@ -238,4 +272,22 @@
         </div>
     </div>
     <!-- Modal end -->
+@endsection
+
+@section('scripts')
+
+<script type="text/javascript">
+
+// slider automatic
+
+var sliderCount = 1;
+setInterval(function(){
+    document.getElementById('radio' + sliderCount).checked = true;
+    sliderCount++;
+    if(sliderCount > 4){
+        sliderCount = 1;
+    }
+}, 5000);
+</script>
+
 @endsection
