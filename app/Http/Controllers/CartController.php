@@ -11,17 +11,24 @@ class CartController extends Controller
 {
     public static function add(Product $product, Request $request)
     {
+
+        // dd($product);
         // dd($request->all());
         $product_quantity = 1;
         if($request->has('quanttity')){
             $product_quantity = $request['quanttity'];
         }
         $userID = auth()->id();
+        if($product->is_sale){
+            $product_price = $product->sale_price;
+        }else{
+            $product_price = $product->price;
+        }
         // add the product to cart
         \Cart::session($userID)->add(array(
             'id' => $product->id,
             'name' => $product->name,
-            'price' => $product->price,
+            'price' => $product_price,
             'quantity' => $product_quantity,
             'attributes' => array(),
             'associatedModel' => $product

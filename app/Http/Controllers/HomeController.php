@@ -27,7 +27,8 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::take(20)->get();
-
+        $new_arrival_products = Product::orderBy('id', 'DESC')->take(12)->get();
+        // dd($products);
         $best_selling_products = Product::query()
                     ->join('order_items', 'order_items.product_id', '=', 'products.id')
                     ->selectRaw('products.*, SUM(order_items.quantity) AS quantity_sold')

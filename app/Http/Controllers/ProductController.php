@@ -14,7 +14,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if(!Auth::user()){
             $cartItems = \Cart::session('_token')->getContent();
@@ -23,12 +23,10 @@ class ProductController extends Controller
         }
 
         $category_id = request('category_id');
-
         if($category_id){
             $category = Category::find($category_id);
             // $products = $category->products;
             $products = $category->allProducts();
-            // dd($products);
         }else{
             $products = Product::take(10)->get();
         }
@@ -58,7 +56,10 @@ class ProductController extends Controller
         }else{
             $cartItems = \Cart::session(auth()->id())->getContent();
         }
-        $product = Product::findOrFail($id);
+        $product = Product::with('categories')->distinct()->findOrFail($id);
+        // dd($product->getKey());
+        session()->push('products.recently_viewed', $product->getKey());
+        // dd($product);
         $categories = Category::whereNull('parent_id')->get();
 
        return view('product.product_details', get_defined_vars());

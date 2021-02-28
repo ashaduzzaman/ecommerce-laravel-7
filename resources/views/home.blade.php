@@ -141,7 +141,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h2>Trending Item</h2>
+                        <h2>New Arrival</h2>
                     </div>
                 </div>
             </div>
@@ -151,19 +151,19 @@
                         <!-- Start Single Tab -->
                         <div class="tab-single">
                             <div class="row">
-                                @foreach ($products as $product)
+                                @foreach ($new_arrival_products as $product)
                                     <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                                         <div class="single-product">
                                             <div class="product-img">
                                                 <a href="{{route('products.show', $product->id)}}">
                                                     <img class="default-img" src="{{ 'public/storage/'.$product->cover_img }}" alt="#">
-                                                    <img class="hover-img" src="{{ 'public/storage/'.$product->cover_img }}" alt="#">
+                                                    {{-- <img class="hover-img" src="{{ 'public/storage/'.$product->cover_img }}" alt="#"> --}}
                                                 </a>
                                                 <div class="button-head">
                                                     <div class="product-action">
-                                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                                                        <a data-toggle="modal" data-target="#exampleModal{{$product->id}}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                                        {{-- <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a> --}}
                                                     </div>
                                                     <div class="product-action-2">
                                                         <a title="Add to cart" href="{{route('cart.add', $product->id)}}">Add to cart
@@ -174,7 +174,106 @@
                                             <div class="product-content">
                                                 <h3><a href="{{route('products.show', $product->id)}}">{{ strlen($product->name) > 50 ? substr($product->name,0,50).'...' : $product->name }}</a></h3>
                                                 <div class="product-price">
-                                                    <span>৳ {{ $product->price }}</span>
+                                                    @if ($product->is_sale)
+                                                        <span class="old">৳ {{ $product->price}}</span>
+                                                        <span>৳ {{ $product->sale_price }}</span>
+                                                    @else
+                                                        <span>৳ {{ $product->price }}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="exampleModal{{$product->id}}" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row no-gutters">
+                                                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                                            <!-- Product Slider -->
+                                                                <div class="product-gallery">
+                                                                    <div class="quickview-slider-active">
+                                                                        @for ($i = 0; $i < 2; $i++)
+                                                                            <div class="single-slider">
+                                                                                <img src="{{ 'public/storage/'.$product->cover_img }}" alt="#">
+                                                                            </div>
+                                                                        @endfor
+                                                                        {{-- <div class="single-slider">
+                                                                            <img src="https://via.placeholder.com/569x528" alt="#">
+                                                                        </div>
+                                                                        <div class="single-slider">
+                                                                            <img src="https://via.placeholder.com/569x528" alt="#">
+                                                                        </div>
+                                                                        <div class="single-slider">
+                                                                            <img src="https://via.placeholder.com/569x528" alt="#">
+                                                                        </div> --}}
+                                                                    </div>
+                                                                </div>
+                                                            <!-- End Product slider -->
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="quickview-content">
+                                                                <h2>{{ $product->name }}</h2>
+                                                                {{-- <div class="quickview-ratting-review">
+                                                                    <div class="quickview-ratting-wrap">
+                                                                        <div class="quickview-ratting">
+                                                                            <i class="yellow fa fa-star"></i>
+                                                                            <i class="yellow fa fa-star"></i>
+                                                                            <i class="yellow fa fa-star"></i>
+                                                                            <i class="yellow fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                        </div>
+                                                                        <a href="#"> (1 customer review)</a>
+                                                                    </div>
+                                                                    <div class="quickview-stock">
+                                                                        <span><i class="fa fa-check-circle-o"></i> in stock</span>
+                                                                    </div>
+                                                                </div> --}}
+                                                                <h3>৳ {{ $product->price }}</h3>
+                                                                <div class="quickview-peragraph">
+                                                                    {{-- {!! strlen($product->description) > 200 ? substr($product->description,0,200).'...' : $product->description !!} --}}
+                                                                </div>
+                                                                <div class="quickview-actions">
+                                                                    <div class="quantity">
+                                                                        <!-- Input Order -->
+                                                                        <div class="input-group">
+                                                                            <form action="{{route('cart.add', $product->id)}}" type="post">
+                                                                            @csrf
+                                                                                <div class="button minus">
+                                                                                    <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quanttity">
+                                                                                        <i class="ti-minus"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <input type="text" name="quanttity" class="input-number"  data-min="1" data-max="1000" value="1">
+                                                                                <div class="button plus">
+                                                                                    <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quanttity">
+                                                                                        <i class="ti-plus"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                        </div>
+                                                                        <!--/ End Input Order -->
+                                                                    </div>
+                                                                    <div class="add-to-cart">
+                                                                        {{-- <a href="#" class="btn">Add to cart</a> --}}
+                                                                        <button class="btn" type="submit">add to cart</button>
+                                                                    </div>
+                                                                </div>
+                                                                </form>
+                                                                <div class="default-social">
+                                                                    <h4 class="share-now">Share:</h4>
+                                                                    <ul>
+                                                                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                                                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                                                        <li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                                                        <li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -252,32 +351,38 @@
                     <div class="owl-carousel popular-slider">
                         <!-- Start Single Product -->
                         @foreach ($products as $product)
-                            <div class="single-product">
-                                <div class="product-img">
-                                    <a href="{{route('products.show', $product->id)}}">
-                                        <img class="default-img" src="{{ 'public/storage/'.$product->cover_img }}" alt="#">
-                                        <img class="hover-img" src="{{ 'public/storage/'.$product->cover_img }}" alt="#">
-                                        <span class="out-of-stock">Hot</span>
-                                    </a>
-                                    <div class="button-head">
-                                        <div class="product-action">
-                                            <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                            <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                            <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                            @if ($product->is_featured)
+                                <div class="single-product">
+                                    <div class="product-img">
+                                        <a href="{{route('products.show', $product->id)}}">
+                                            <img class="default-img" src="{{ 'public/storage/'.$product->cover_img }}" alt="#">
+                                            <img class="hover-img" src="{{ 'public/storage/'.$product->cover_img }}" alt="#">
+                                            <span class="out-of-stock">Hot</span>
+                                        </a>
+                                        <div class="button-head">
+                                            <div class="product-action">
+                                                {{-- <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a> --}}
+                                                {{-- <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                                <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a> --}}
+                                            </div>
+                                            <div class="product-action-2">
+                                                <a title="Add to cart" href="{{route('cart.add', $product->id)}}">Add to cart</a>
+                                            </div>
                                         </div>
-                                        <div class="product-action-2">
-                                            <a title="Add to cart" href="{{route('cart.add', $product->id)}}">Add to cart</a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3><a href="{{route('products.show', $product->id)}}">{{ strlen($product->name) > 50 ? substr($product->name,0,50).'...' : $product->name }}</a></h3>
+                                        <div class="product-price">
+                                            @if ($product->is_sale)
+                                                <span class="old">৳ {{ $product->price}}</span>
+                                                <span>৳ {{ $product->sale_price }}</span>
+                                            @else
+                                                <span>৳ {{ $product->price }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-content">
-                                    <h3><a href="{{route('products.show', $product->id)}}">{{ strlen($product->name) > 50 ? substr($product->name,0,50).'...' : $product->name }}</a></h3>
-                                    <div class="product-price">
-                                        <span class="old">$60.00</span>
-                                        <span>৳ {{ $product->price }}</span>
-                                    </div>
-                                </div>
-                            </div>
+                            @endif
                         @endforeach
                         <!-- End Single Product -->
                     </div>
@@ -300,58 +405,27 @@
 						</div>
 					</div>
 					<!-- Start Single List  -->
-					<div class="single-list">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 col-12">
-								<div class="list-image overlay">
-									<img src="https://via.placeholder.com/115x140" alt="#">
-									<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-12 no-padding">
-								<div class="content">
-									<h4 class="title"><a href="#">Licity jelly leg flat Sandals</a></h4>
-									<p class="price with-discount">$59</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- End Single List  -->
-					<!-- Start Single List  -->
-					<div class="single-list">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 col-12">
-								<div class="list-image overlay">
-									<img src="https://via.placeholder.com/115x140" alt="#">
-									<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-12 no-padding">
-								<div class="content">
-									<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-									<p class="price with-discount">$44</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- End Single List  -->
-					<!-- Start Single List  -->
-					<div class="single-list">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 col-12">
-								<div class="list-image overlay">
-									<img src="https://via.placeholder.com/115x140" alt="#">
-									<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-12 no-padding">
-								<div class="content">
-									<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-									<p class="price with-discount">$89</p>
-								</div>
-							</div>
-						</div>
-					</div>
+                    @foreach ($products as $product)
+                        @if ($product->is_sale)
+                            <div class="single-list">
+                                <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="list-image overlay">
+                                                    <img src="{{ 'public/storage/'.$product->cover_img }}" alt="{{route('products.show', $product->id)}}">
+                                                    <a href="{{route('cart.add', $product->id)}}" class="buy"><i class="fa fa-shopping-bag"></i></a>
+                                                </div>
+                                            </div>
+
+                                    <div class="col-lg-6 col-md-6 col-12 no-padding">
+                                        <div class="content">
+                                            <h4 class="title"><a href="{{route('products.show', $product->id)}}">{{ strlen($product->name) > 50 ? substr($product->name,0,50).'...' : $product->name }}</a></h4>
+                                            <p class="price with-discount">৳ {{ $product->sale_price }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
 					<!-- End Single List  -->
 				</div>
 				<div class="col-lg-4 col-md-6 col-12">
@@ -374,8 +448,8 @@
 							</div>
 							<div class="col-lg-6 col-md-6 col-12 no-padding">
 								<div class="content">
-									<h5 class="title"><a href="{{route('products.show', $product->id)}}">{{ strlen($product->name) > 30 ? substr($product->name,0,30).'...' : $product->name }}</a></h5>
-									<p class="price with-discount">৳ {{ $product->price }}</p>
+									<h5 class="title"><a href="{{route('products.show', $best_selling_product->id)}}">{{ strlen($best_selling_product->name) > 30 ? substr($best_selling_product->name,0,30).'...' : $best_selling_product->name }}</a></h5>
+									<p class="price with-discount">৳ {{ $best_selling_product->price }}</p>
 								</div>
 							</div>
 						</div>

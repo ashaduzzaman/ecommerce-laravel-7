@@ -19,7 +19,7 @@ class AccountController extends Controller
     public function index()
     {
         $userDetails = Auth::user();
-        $orders = Order::where('user_id', $userDetails->id)->get();
+        $orders = Order::where('user_id', $userDetails->id)->orderBy('id', 'DESC')->get();
         // dd($orders);
         return view('account.index', get_defined_vars());
     }

@@ -53,8 +53,16 @@ class CartUpdateForm extends Component
         ]);
         $this->emit('cartUpdated');
     }
+
+    public $isDisabled = false;
+
     public function render()
     {
+        if ($this->quantity <= 1) {
+            $this->isDisabled = true;
+        }else{
+            $this->isDisabled = false;
+        }
         return view('livewire.cart-update-form');
     }
 }

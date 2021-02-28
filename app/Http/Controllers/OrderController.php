@@ -100,11 +100,20 @@ class OrderController extends Controller
 
         \Cart::session(auth()->id())->clear();
 
+        // Toastr Message
+
+        $toastrNotification = array(
+            'toastrMessage' => 'Order successfully placed.',
+            'alert-type' => 'success'
+        );
+
         //send email to customer
 
         //take user to thank you page
 
-        return redirect()->route('home')->withMessage('Order has been placed');
+        return redirect(route('account.index').'#v-pills-order-history')->with($toastrNotification);
+        // return redirect()->route('home', ['#v-pills-order-history'])->with($toastrNotification);
+        // return redirect()->route('home')->withMessage('Order has been placed');
     }
 
     /**

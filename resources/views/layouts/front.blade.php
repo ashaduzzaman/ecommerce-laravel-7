@@ -18,6 +18,9 @@
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="{{ asset('/public/asset/css/bootstrap.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/mint-choc/jquery-ui.css">
 	<!-- Magnific Popup -->
     <link rel="stylesheet" href="{{ asset('/public/asset/css/magnific-popup.min.css') }}">
 	<!-- Font Awesome -->
@@ -36,6 +39,11 @@
     <link rel="stylesheet" href="{{ asset('/public/asset/css/owl-carousel.css') }}">
 	<!-- Slicknav -->
     <link rel="stylesheet" href="{{ asset('/public/asset/css/slicknav.min.css') }}">
+	<!-- Toast notification -->
+    <link rel="stylesheet" href="{{ asset('/public/asset/css/toastr.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
 
 	<!-- Eshop StyleSheet -->
 	<link rel="stylesheet" href="{{ asset('/public/asset/css/reset.css') }}">
@@ -89,7 +97,7 @@
 		<div class="topbar">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-4 col-md-12 col-12">
+					<div class="col-lg-4 col-md-12 col-12 d-none d-sm-block">
 						<!-- Top Left -->
 						<div class="top-left">
 							<ul class="list-main">
@@ -139,17 +147,17 @@
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
-						{{-- <div class="search-top">
+						<div class="search-top">
 							<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
 							<!-- Search Form -->
 							<div class="search-top">
-								<form class="search-form">
-									<input type="text" placeholder="Search here..." name="search">
+								<form class="search-form" action="{{ route('products.search') }}" method="GET">
+									<input type="search" placeholder="Search here..." name="search">
 									<button value="search" type="submit"><i class="ti-search"></i></button>
 								</form>
 							</div>
 							<!--/ End Search Form -->
-						</div> --}}
+						</div>
 						<!--/ End Search Form -->
 						<div class="mobile-nav"></div>
 					</div>
@@ -284,6 +292,15 @@
         </div>
 		<!--/ End Header Inner -->
 	</header>
+    <div class="sinlge-bar shopping floating-shopping d-block d-sm-none">
+        <a href="{{ route('cart.index') }}" class="single-icon floating_cart_button"><i class="ti-bag"></i> <span class="total-count">
+            @auth
+                {{ \Cart::session(auth()->id())->getContent()->count() }}
+            @else
+                0
+            @endauth
+        </span></a>
+    </div>
 	<!--/ End Header -->
 
 	<!-- Slider Area -->
@@ -354,7 +371,7 @@
 								<li><a href="#">About Us</a></li>
 								<li><a href="#">Faq</a></li>
 								<li><a href="#">Terms & Conditions</a></li>
-								<li><a href="#">Contact Us</a></li>
+								<li><a href="{{ route('contact.index') }}">Contact Us</a></li>
 								<li><a href="#">Help</a></li>
 							</ul>
 						</div>
@@ -420,18 +437,27 @@
 			</div>
 		</div>
 	</footer>
+
+
 	<!-- /End Footer Area -->
 
 	<!-- Jquery -->
     <script src="{{ asset('/public/asset/js/jquery.min.js') }}"></script>
     <script src="{{ asset('/public/asset/js/jquery-migrate-3.0.0.js') }}"></script>
 	<script src="{{ asset('/public/asset/js/jquery-ui.min.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 	<!-- Popper JS -->
 	<script src="{{ asset('/public/asset/js/popper.min.js') }}"></script>
 	<!-- Bootstrap JS -->
 	<script src="{{ asset('/public/asset/js/bootstrap.min.js') }}"></script>
 	<!-- Color JS -->
 	<script src="{{ asset('/public/asset/js/colors.js') }}"></script>
+
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
 	<!-- Slicknav JS -->
 	<script src="{{ asset('/public/asset/js/slicknav.min.js') }}"></script>
 	<!-- Owl Carousel JS -->
@@ -452,13 +478,50 @@
 	<script src="{{ asset('/public/asset/js/onepage-nav.min.js') }}"></script>
 	<!-- Easing JS -->
 	<script src="{{ asset('/public/asset/js/easing.js') }}"></script>
+	<!-- Loader JS-->
     <script src="{{ asset('/public/asset/js/TweenMax.min.js') }}"></script>
     <script src="{{ asset('/public/asset/js/MorphSVGPlugin.min.js') }}"></script>
+	<!-- Toastr notification JS -->
+    <script src="{{ asset('/public/asset/js/toastr.min.js') }}"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.3/TweenMax.min.js"></script> --}}
 	<!-- Active JS -->
     <script src="{{ asset('/public/asset/js/active.js') }}"></script>
     <script src="{{ asset('/public/asset/js/custom.js') }}"></script>
     @yield('scripts')
     @livewireScripts
+    <script>
+        // Toast Notification
+
+        toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+        }
+
+        // toastr.success("Order successfully placed.");
+
+        @if(Session::has('toastrMessage'))
+            console.log('session has');
+            let type = "{{Session::get('alert-type','info')}}"
+
+            switch(type){
+                case 'success':
+                    toastr.success("{{ Session::get('toastrMessage')}}");
+                    break;
+            }
+        @endif
+    </script>
 </body>
 </html>

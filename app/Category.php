@@ -25,11 +25,11 @@ class Category extends ModelsCategory
 
         $allProducts = $allProducts->concat($mainCategoryProducts);
 
-        if($this->children->isNotEmpty()){
-            foreach($this->children as $child){
-                $allProducts = $allProducts->concat($child->products);
-            }
-        }
+        // if($this->children->isNotEmpty()){
+        //     foreach($this->children as $child){
+        //         $allProducts = $allProducts->concat($child->products);
+        //     }
+        // }
 
 
         return $allProducts;
